@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Registration Form</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <style>
+    
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+body{
+  background-image: url(hero-bg.jpg);
+  padding: 0 10px;
+}
+.wrapper{
+  max-width: 500px;
+  width: 100%;
+  background: #fff;
+  margin: 20px auto;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+  padding: 30px;
+}
+
+.wrapper .title{
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: brown;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.wrapper .form{
+  width: 100%;
+    height: auto;
+}
+
+.wrapper .form .inputfield{
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .form .inputfield label{
+   width: 200px;
+   color: goldenrod;
+   margin-right: 10px;
+  font-size: 14px;
+}
+
+.wrapper .form .inputfield .input,
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.wrapper .form .inputfield .textarea{
+  width: 100%;
+  height: 125px;
+  resize: none;
+}
+
+.wrapper .form .inputfield .custom_select{
+  position: relative;
+  width: 100%;
+  height: 37px;
+}
+
+.wrapper .form .inputfield .custom_select:before{
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  border: 8px solid;
+  border-color: #d5dbd9 transparent transparent transparent;
+  pointer-events: none;
+}
+
+.wrapper .form .inputfield .custom_select select{
+  -webkit-appearance: none;
+  -moz-appearance:   none;
+  appearance:        none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  padding: 8px 10px;
+  font-size: 15px;
+  border: 1px solid #d5dbd9;
+  border-radius: 3px;
+}
+
+
+.wrapper .form .inputfield .input:focus,
+.wrapper .form .inputfield .textarea:focus,
+.wrapper .form .inputfield .custom_select select:focus{
+  border: 1px solid #fec107;
+}
+
+.wrapper .form .inputfield p{
+   font-size: 14px;
+   color: #757575;
+}
+.wrapper .form .inputfield .check{
+  width: 15px;
+  height: 15px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.wrapper .form .inputfield .check input[type="checkbox"]{
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.wrapper .form .inputfield .check .checkmark{
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fec107;
+  display: block;
+  position: relative;
+}
+.wrapper .form .inputfield .check .checkmark:before{
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  width: 5px;
+  height: 2px;
+  border: 2px solid;
+  border-color: transparent transparent #fff #fff;
+  transform: rotate(-45deg);
+  display: none;
+}
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark{
+  background: #fec107;
+}
+
+.wrapper .form .inputfield .check input[type="checkbox"]:checked ~ .checkmark:before{
+  display: block;
+}
+
+.wrapper .form .inputfield .btn{
+  width: 100%;
+   padding: 8px 10px;
+  font-size: 15px; 
+  border: 0px;
+  background:brown ;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+.wrapper .form .inputfield .btn:hover{
+  background: green;
+}
+
+.wrapper .form .inputfield:last-child{
+  margin-bottom: 0;
+}
+
+@media (max-width:420px) {
+  .wrapper .form .inputfield{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wrapper .form .inputfield label{
+    margin-bottom: 5px;
+  }
+  
+}
+    </style>
+    <script type="text/javascript">
+		
+
+		function validation(){
+
+			var user = document.getElementById('user').value;
+            var user2 = document.getElementById('user2').value;
+			var pass = document.getElementById('pass').value;
+			var confirmpass = document.getElementById('conpass').value;
+			var mobileNumber = document.getElementById('mobileNumber').value;
+			var emails = document.getElementById('emails').value;
+
+
+
+
+
+			if(user == ""){
+				document.getElementById('username').innerHTML =" ** Please fill the firstname field";
+				return false;
+			}
+			if((user.length <= 2) || (user.length > 20)) {
+				document.getElementById('username').innerHTML =" ** firstname lenght must be between 2 and 20";
+				return false;	
+			}
+			if(!isNaN(user)){
+				document.getElementById('username').innerHTML =" ** only characters are allowed";
+				return false;
+			}
+            if(user2 == ""){
+				document.getElementById('username2').innerHTML =" ** Please fill the lastname field";
+				return false;
+			}
+			if((user2.length <= 2) || (user2.length > 20)) {
+				document.getElementById('username2').innerHTML =" ** lastname lenght must be between 2 and 20";
+				return false;	
+			}
+			if(!isNaN(user2)){
+				document.getElementById('username2').innerHTML =" ** only characters are allowed";
+				return false;
+			}
+
+
+
+
+
+
+
+			if(pass == ""){
+				document.getElementById('passwords').innerHTML =" ** Please fill the password field";
+				return false;
+			}
+			if((pass.length <8 ) || (pass.length > 8)) {
+				document.getElementById('passwords').innerHTML =" ** Passwords lenght must be 8 chatacter";
+				return false;	
+			}
+            if((pass.charAt(pass.length-8)!='&') && (pass.charAt(pass.length-7)!='&')&&(pass.charAt(pass.length-6)!='&')&&(pass.charAt(pass.length-5)!='&')&&(pass.charAt(pass.length-4)!='&')&&(pass.charAt(pass.length-3)!='&')&&(pass.charAt(pass.length-2)!='&')&&(pass.charAt(pass.length-1)!='&')&&(pass.charAt(pass.length-8)!='#')&&(pass.charAt(pass.length-7)!='#')&&(pass.charAt(pass.length-6)!='#')&&(pass.charAt(pass.length-5)!='#')&&(pass.charAt(pass.length-4)!='&')&&(pass.charAt(pass.length-3)!='#')&&(pass.charAt(pass.length-2)!='#')&&(pass.charAt(pass.length-1)!='#')&&(pass.charAt(pass.length-8)!='#')&&(pass.charAt(pass.length-7)!='#')&&(pass.charAt(pass.length-6)!='#')&&(pass.charAt(pass.length-5)!='#')&&(pass.charAt(pass.length-4)!='&')&&(pass.charAt(pass.length-3)!='#')&&(pass.charAt(pass.length-2)!='#')&&(pass.charAt(pass.length-1)!='#')&&(pass.charAt(pass.length-8)!='*')&&(pass.charAt(pass.length-7)!='*')&&(pass.charAt(pass.length-6)!='*')&&(pass.charAt(pass.length-5)!='*')&&(pass.charAt(pass.length-4)!='*')&&(pass.charAt(pass.length-3)!='*')&&(pass.charAt(pass.length-2)!='*')&&(pass.charAt(pass.length-1)!='*')&&(pass.charAt(pass.length-8)!='_')&&(pass.charAt(pass.length-7)!='_')&&(pass.charAt(pass.length-6)!='_')&&(pass.charAt(pass.length-5)!='_')&&(pass.charAt(pass.length-4)!='_')&&(pass.charAt(pass.length-3)!='_')&&(pass.charAt(pass.length-2)!='_')&&(pass.charAt(pass.length-1)!='_')&&(pass.charAt(pass.length-8)!='-')&&(pass.charAt(pass.length-7)!='-')&&(pass.charAt(pass.length-6)!='-')&&(pass.charAt(pass.length-5)!='-')&&(pass.charAt(pass.length-4)!='-')&&(pass.charAt(pass.length-3)!='-')&&(pass.charAt(pass.length-2)!='-')&&(pass.charAt(pass.length-1)!='-'))
+            {document.getElementById('passwords').innerHTML =" ** Passwords  must contain special character like # & * _ -";
+				return false;
+               
+               
+               }
+               
+
+
+			if(pass!=confirmpass){
+				document.getElementById('confrmpass').innerHTML =" ** Password does not match the confirm password";
+				return false;
+			}
+
+
+
+			if(confirmpass == ""){
+				document.getElementById('confrmpass').innerHTML =" ** Please fill the confirmpassword field";
+				return false;
+			}
+
+
+
+
+			if(mobileNumber == ""){
+				document.getElementById('mobileno').innerHTML =" ** Please fill the mobile NUmber field";
+				return false;
+			}
+			if(isNaN(mobileNumber)){
+				document.getElementById('mobileno').innerHTML =" ** user must write digits only not characters";
+				return false;
+			}
+			if(mobileNumber.length!=11){
+				document.getElementById('mobileno').innerHTML =" ** Mobile Number must be 11 digits only";
+				return false;
+			}
+
+
+
+			if(emails == ""){
+				document.getElementById('emailids').innerHTML =" ** Please fill the email idx` field";
+				return false;
+			}
+			if(emails.indexOf('@') <= 0 ){
+				document.getElementById('emailids').innerHTML =" ** @ Invalid Position";
+				return false;
+			}
+
+			if((emails.charAt(emails.length-4)!='.') && (emails.charAt(emails.length-3)!='.')){
+				document.getElementById('emailids').innerHTML =" ** . Invalid Position";
+				return false;
+			}
+		}
+
+	</script>
+</head>
+<body>
+
+
+	<div class="wrapper">
+		
+		<div>
+            <div class="title"> Registration Form </div>
+			<form action="mohamed.html" onsubmit="return validation()" class="form">
+				
+				<div class="inputfield">
+					<label for="user" > firstname: </label>
+					<input type="text" name="user" class="form-control" id="user" autocomplete="off">
+					<span id="username" class="text-danger font-weight-bold"> </span>
+				</div>
+                <div class="inputfield">
+					<label for="user2" > lastname: </label>
+					<input type="text" name="user2" class="form-control" id="user2" autocomplete="off">
+					<span id="username2" class="text-danger font-weight-bold"> </span>
+				</div>
+
+
+				<div class="inputfield">
+					<label > Password: </label>
+					<input type="password" name="pass" class="input" id="pass" autocomplete="off">
+					<span id="passwords" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="inputfield">
+					<label > Confirm Password: </label>
+					<input type="password" name="conpass" class="input" id="conpass" autocomplete="off">
+					<span id="confrmpass" class="text-danger font-weight-bold"> </span>
+				</div>
+                <div class="inputfield">
+                  <label>Gender</label>
+                 <div class="custom_select">
+            <select>
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+</div>
+				<div class="inputfield">
+					<label > Mobile Number: </label>
+					<input type="text" name="mobile" class="input" id="mobileNumber" autocomplete="off">
+					<span id="mobileno" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="inputfield">
+					<label > Email: </label>
+					<input type="text" name="email" class="input" id="emails" autocomplete="off">
+					<span id="emailids" class="text-danger font-weight-bold"> </span>
+				</div>
+<div class="inputfield">
+				<input type="submit" name="submit" value="submit" class="btn" 	autocomplete="off">
+                    
+                </div>
+			</form><br><br>
+
+
+		</div>
+	</div>
+
+
+
+	
+
+</body>
+</html>
